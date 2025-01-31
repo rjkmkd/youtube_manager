@@ -1,12 +1,17 @@
 
 import json
 
+import json
+
 def load_data():
     try:
         with open('youtube.txt', 'r') as file:
-            test = json.load(file)
-            # print(type(test))
-            return test
+            try:
+                test = json.load(file)
+                return test
+            except json.JSONDecodeError:
+                print("Error: Invalid JSON format in youtube.txt")
+                return []
     except FileNotFoundError:
         return []
     
